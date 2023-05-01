@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -15,7 +17,7 @@ body {
   grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
 }
 
-.app-by{
+.app-by {
   text-align: center;
   margin-top: 5rem;
   font-weight: 900;
@@ -31,12 +33,12 @@ body {
   font-size: 2rem;
   border: 1px solid white;
   outline: none;
-  background-color: rgba(255, 255, 255, .75);
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 .calculator-grid > button:hover,
 .calculator-grid > button:focus {
-  background-color: rgba(255, 255, 255, .9);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .span-two {
@@ -45,18 +47,18 @@ body {
 
 .output {
   grid-column: 1 / -1;
-  background-color: rgba(0, 0, 0, .75);
+  background-color: rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-around;
-  padding: .75rem;
+  padding: 0.75rem;
   word-wrap: break-word;
   word-break: break-all;
 }
 
 .output .previous-operand {
-  color: rgba(255, 255, 255, .75);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 1.5rem;
 }
 

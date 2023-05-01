@@ -1,4 +1,4 @@
-import { ACTIONS } from "./App"
+import { ACTIONS } from "./App";
 
 export default function OperationButton({ dispatch, operation }) {
   return (
@@ -9,5 +9,5 @@ export default function OperationButton({ dispatch, operation }) {
     >
       {operation}
     </button>
-  )
+  );
 }
