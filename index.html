@@ -37,6 +37,10 @@
       background-color: #ff9f1a;
     }
 
+    .dark .bg-indigo-500 {
+      background-color: #6b46c1;
+    }
+
     .dark .text-gray-700 {
       color: #e5e5e5;
     }
@@ -49,6 +53,10 @@
       background-color: #ffac38;
     }
 
+    .dark .hover\:bg-indigo-600:hover {
+      background-color: #553c9a;
+    }
+
     .dark .bg-gray-300:focus {
       outline: 2px solid #e5e5e5;
       outline-offset: 2px;
@@ -58,6 +66,11 @@
       outline: 2px solid #ffac38;
       outline-offset: 2px;
     }
+
+    .dark .bg-indigo-500:focus {
+      outline: 2px solid #553c9a;
+      outline-offset: 2px;
+    }
   </style>
 </head>
 
@@ -65,7 +78,7 @@
   <div class="container">
     <div class="bg-gray-200 dark:bg-gray-300 p-4 mb-4 rounded-lg">
       <div class="flex justify-end mb-2">
-        <input type="text" id="result" class="bg-gray-100 w-full p-2 text-2xl rounded-lg" readonly>
+        <input type="text" id="result" class="bg-gray-100 w-full p-2 text-2xl rounded-lg text-right" readonly>
       </div>
       <div class="grid grid-cols-4 gap-4">
         <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
@@ -96,27 +109,12 @@
           onclick="appendToResult('0')">0</button>
         <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
           onclick="calculateResult()">=</button>
-        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-          onclick="appendToResult('+')">+</button>
-        <button id="mode-switch" class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+        <button id="mode-switch"
+          class="calculator-button bg-indigo-500 dark:bg-indigo-500 hover:bg-indigo-600 dark:hover:bg-indigo-600 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
           onclick="toggleScientificMode()">Scientific</button>
-        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-          onclick="appendToResult('(')">(</button>
-        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-          onclick="appendToResult(')')">)</button>
-        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-          onclick="appendToResult('**')">^</button>
-        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-          onclick="appendToResult('Math.sqrt(')">√</button>
-        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-          onclick="appendToResult('Math.sin(')">sin</button>
-        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-          onclick="appendToResult('Math.cos(')">cos</button>
-        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-          onclick="appendToResult('Math.tan(')">tan</button>
       </div>
       <div class="flex justify-center mt-4">
-        <button class="bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded w-1/2"
+        <button class="bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded w-full"
           onclick="clearResult()">Clear</button>
       </div>
     </div>
@@ -142,16 +140,45 @@
       isScientificMode = !isScientificMode;
       const buttons = document.getElementsByClassName('calculator-button');
       const modeSwitch = document.getElementById('mode-switch');
+
       if (isScientificMode) {
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].classList.add('scientific');
         }
         modeSwitch.innerHTML = 'Standard';
+        modeSwitch.classList.remove('bg-indigo-500', 'dark:bg-indigo-500', 'hover:bg-indigo-600', 'dark:hover:bg-indigo-600');
+        modeSwitch.classList.add('bg-yellow-400', 'dark:bg-yellow-400', 'hover:bg-yellow-500', 'dark:hover:bg-yellow-500');
+
+        // Add scientific operators
+        const scientificOperators = ['(', ')', '^', '√', 'sin', 'cos', 'tan'];
+        for (let i = 0; i < scientificOperators.length; i++) {
+          const operator = scientificOperators[i];
+          const operatorButton = document.createElement('button');
+          operatorButton.className = 'calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded';
+          operatorButton.innerHTML = operator;
+          operatorButton.onclick = function () {
+            appendToResult(operator);
+          };
+          document.getElementsByClassName('grid')[0].appendChild(operatorButton);
+        }
       } else {
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].classList.remove('scientific');
         }
         modeSwitch.innerHTML = 'Scientific';
+        modeSwitch.classList.remove('bg-yellow-400', 'dark:bg-yellow-400', 'hover:bg-yellow-500', 'dark:hover:bg-yellow-500');
+        modeSwitch.classList.add('bg-indigo-500', 'dark:bg-indigo-500', 'hover:bg-indigo-600', 'dark:hover:bg-indigo-600');
+
+        // Remove scientific operators
+        const scientificOperators = ['(', ')', '^', '√', 'sin', 'cos', 'tan'];
+        const grid = document.getElementsByClassName('grid')[0];
+        const operatorButtons = grid.getElementsByClassName('calculator-button');
+        for (let i = operatorButtons.length - 1; i >= 0; i--) {
+          const operatorButton = operatorButtons[i];
+          if (scientificOperators.includes(operatorButton.innerHTML)) {
+            grid.removeChild(operatorButton);
+          }
+        }
       }
     }
   </script>
