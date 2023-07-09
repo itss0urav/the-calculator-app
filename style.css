@@ -1,0 +1,64 @@
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.calculator-button {
+  min-width: 50px;
+}
+
+.scientific .calculator-button {
+  min-width: 60px;
+}
+
+.scientific .calculator-button.small {
+  min-width: 50px;
+}
+
+.dark .bg-gray-200 {
+  background-color: #333333;
+}
+
+.dark .bg-gray-300 {
+  background-color: #4a4a4a;
+}
+
+.dark .bg-yellow-400 {
+  background-color: #ff9f1a;
+}
+
+.dark .bg-indigo-500 {
+  background-color: #6b46c1;
+}
+
+.dark .text-gray-700 {
+  color: #e5e5e5;
+}
+
+.dark .hover\:bg-gray-400:hover {
+  background-color: #656565;
+}
+
+.dark .hover\:bg-yellow-500:hover {
+  background-color: #ffac38;
+}
+
+.dark .hover\:bg-indigo-600:hover {
+  background-color: #553c9a;
+}
+
+.dark .bg-gray-300:focus {
+  outline: 2px solid #e5e5e5;
+  outline-offset: 2px;
+}
+
+.dark .bg-yellow-400:focus {
+  outline: 2px solid #ffac38;
+  outline-offset: 2px;
+}
+
+.dark .bg-indigo-500:focus {
+  outline: 2px solid #553c9a;
+  outline-offset: 2px;
+}
