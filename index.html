@@ -1,187 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculator App</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      .container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 2rem;
-      }
 
-      .calculator-button {
-        min-width: 50px;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
 
-      .dark .bg-gray-200 {
-        background-color: #333333;
-      }
+    .calculator-button {
+      min-width: 50px;
+    }
 
-      .dark .bg-gray-300 {
-        background-color: #4a4a4a;
-      }
+    .scientific .calculator-button {
+      min-width: 60px;
+    }
 
-      .dark .bg-yellow-400 {
-        background-color: #ff9f1a;
-      }
+    .scientific .calculator-button.small {
+      min-width: 50px;
+    }
 
-      .dark .text-gray-700 {
-        color: #e5e5e5;
-      }
+    .dark .bg-gray-200 {
+      background-color: #333333;
+    }
 
-      .dark .hover\:bg-gray-400:hover {
-        background-color: #656565;
-      }
+    .dark .bg-gray-300 {
+      background-color: #4a4a4a;
+    }
 
-      .dark .hover\:bg-yellow-500:hover {
-        background-color: #ffac38;
-      }
+    .dark .bg-yellow-400 {
+      background-color: #ff9f1a;
+    }
 
-      .dark .bg-gray-300:focus {
-        outline: 2px solid #e5e5e5;
-        outline-offset: 2px;
-      }
+    .dark .text-gray-700 {
+      color: #e5e5e5;
+    }
 
-      .dark .bg-yellow-400:focus {
-        outline: 2px solid #ffac38;
-        outline-offset: 2px;
-      }
-    </style>
-  </head>
+    .dark .hover\:bg-gray-400:hover {
+      background-color: #656565;
+    }
 
-  <body class="dark">
-    <div class="container">
-      <div class="bg-gray-200 dark:bg-gray-300 p-4 mb-4 rounded-lg">
-        <div class="flex justify-end mb-2">
-          <input
-            type="text"
-            id="result"
-            class="bg-gray-100 w-full p-2 text-2xl rounded-lg"
-            readonly
-          />
-        </div>
-        <div class="grid grid-cols-4 gap-4">
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('7')"
-          >
-            7
-          </button>
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('8')"
-          >
-            8
-          </button>
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('9')"
-          >
-            9
-          </button>
-          <button
-            class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('/')"
-          >
-            /
-          </button>
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('4')"
-          >
-            4
-          </button>
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('5')"
-          >
-            5
-          </button>
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('6')"
-          >
-            6
-          </button>
-          <button
-            class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('*')"
-          >
-            *
-          </button>
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('1')"
-          >
-            1
-          </button>
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('2')"
-          >
-            2
-          </button>
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('3')"
-          >
-            3
-          </button>
-          <button
-            class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('-')"
-          >
-            -
-          </button>
-          <button
-            class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('0')"
-          >
-            0
-          </button>
-          <button
-            class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="calculateResult()"
-          >
-            =
-          </button>
-          <button
-            class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
-            onclick="appendToResult('+')"
-          >
-            +
-          </button>
-        </div>
-        <div class="flex justify-center mt-4">
-          <button
-            class="bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded w-1/2"
-            onclick="clearResult()"
-          >
-            Clear
-          </button>
-        </div>
+    .dark .hover\:bg-yellow-500:hover {
+      background-color: #ffac38;
+    }
+
+    .dark .bg-gray-300:focus {
+      outline: 2px solid #e5e5e5;
+      outline-offset: 2px;
+    }
+
+    .dark .bg-yellow-400:focus {
+      outline: 2px solid #ffac38;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <div class="container">
+    <div class="bg-gray-200 dark:bg-gray-300 p-4 mb-4 rounded-lg">
+      <div class="flex justify-end mb-2">
+        <input type="text" id="result" class="bg-gray-100 w-full p-2 text-2xl rounded-lg" readonly>
+      </div>
+      <div class="grid grid-cols-4 gap-4">
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('7')">7</button>
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('8')">8</button>
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('9')">9</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('/')">/</button>
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('4')">4</button>
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('5')">5</button>
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('6')">6</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('*')">*</button>
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('1')">1</button>
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('2')">2</button>
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('3')">3</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('-')">-</button>
+        <button class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('0')">0</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="calculateResult()">=</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('+')">+</button>
+        <button id="mode-switch" class="calculator-button bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="toggleScientificMode()">Scientific</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('(')">(</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult(')')">)</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('**')">^</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('Math.sqrt(')">√</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('Math.sin(')">sin</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('Math.cos(')">cos</button>
+        <button class="calculator-button bg-yellow-400 dark:bg-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-500 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('Math.tan(')">tan</button>
+      </div>
+      <div class="flex justify-center mt-4">
+        <button class="bg-gray-300 dark:bg-gray-200 hover:bg-gray-400 dark:hover:bg-gray-300 text-gray-700 dark:text-gray-700 font-bold py-2 px-4 rounded w-1/2"
+          onclick="clearResult()">Clear</button>
       </div>
     </div>
+  </div>
 
-    <script>
-      function appendToResult(value) {
-        document.getElementById("result").value += value;
-      }
+  <script>
+    let isScientificMode = false;
 
-      function calculateResult() {
-        const result = eval(document.getElementById("result").value);
-        document.getElementById("result").value = result;
-      }
+    function appendToResult(value) {
+      document.getElementById('result').value += value;
+    }
 
-      function clearResult() {
-        document.getElementById("result").value = "";
+    function calculateResult() {
+      const result = eval(document.getElementById('result').value);
+      document.getElementById('result').value = result;
+    }
+
+    function clearResult() {
+      document.getElementById('result').value = '';
+    }
+
+    function toggleScientificMode() {
+      isScientificMode = !isScientificMode;
+      const buttons = document.getElementsByClassName('calculator-button');
+      const modeSwitch = document.getElementById('mode-switch');
+      if (isScientificMode) {
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].classList.add('scientific');
+        }
+        modeSwitch.innerHTML = 'Standard';
+      } else {
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].classList.remove('scientific');
+        }
+        modeSwitch.innerHTML = 'Scientific';
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>
