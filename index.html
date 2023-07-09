@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .calculator-button {
+      min-width: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="bg-gray-200 p-4 mb-4 rounded-lg">
+      <div class="flex justify-end mb-2">
+        <input type="text" id="result" class="bg-gray-100 w-full p-2 text-2xl rounded-lg" readonly>
+      </div>
+      <div class="grid grid-cols-4 gap-4">
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('7')">7</button>
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('8')">8</button>
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('9')">9</button>
+        <button class="calculator-button bg-yellow-400 hover:bg-yellow-500 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('/')">/</button>
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('4')">4</button>
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('5')">5</button>
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('6')">6</button>
+        <button class="calculator-button bg-yellow-400 hover:bg-yellow-500 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('*')">*</button>
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('1')">1</button>
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('2')">2</button>
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('3')">3</button>
+        <button class="calculator-button bg-yellow-400 hover:bg-yellow-500 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('-')">-</button>
+        <button class="calculator-button bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('0')">0</button>
+        <button class="calculator-button bg-yellow-400 hover:bg-yellow-500 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="calculateResult()">=</button>
+        <button class="calculator-button bg-yellow-400 hover:bg-yellow-500 text-gray-700 font-bold py-2 px-4 rounded"
+          onclick="appendToResult('+')">+</button>
+      </div>
+      <div class="flex justify-center mt-4">
+        <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded w-1/2"
+          onclick="clearResult()">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function appendToResult(value) {
+      document.getElementById('result').value += value;
+    }
+
+    function calculateResult() {
+      const result = eval(document.getElementById('result').value);
+      document.getElementById('result').value = result;
+    }
+
+    function clearResult() {
+      document.getElementById('result').value = '';
+    }
+  </script>
+</body>
+
+</html>
